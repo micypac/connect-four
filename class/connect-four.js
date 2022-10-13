@@ -21,17 +21,52 @@ class ConnectFour {
     Screen.initialize(6, 7);
     Screen.setGridlines(true);
 
-    // Replace this with real commands
-    Screen.addCommand("t", "test command (remove)", ConnectFour.testCommand);
+    // function definitions for movement commands
+    const moveUp = () => {
+      this.cursor.resetBackgroundColor.call(this.cursor);
+      this.cursor.up();
+      this.cursor.setBackgroundColor.call(this.cursor);
+      Screen.render();
+    };
 
+    const moveDown = () => {
+      this.cursor.resetBackgroundColor.call(this.cursor);
+      this.cursor.down();
+      this.cursor.setBackgroundColor.call(this.cursor);
+      Screen.render();
+    };
+
+    const moveRight = () => {
+      this.cursor.resetBackgroundColor.call(this.cursor);
+      this.cursor.right();
+      this.cursor.setBackgroundColor.call(this.cursor);
+      Screen.render();
+    };
+
+    const moveLeft = () => {
+      this.cursor.resetBackgroundColor.call(this.cursor);
+      this.cursor.left();
+      this.cursor.setBackgroundColor.call(this.cursor);
+      Screen.render();
+    };
+
+    // add game commands
+
+    Screen.addCommand("h", "show commands", Screen.printCommands);
+    Screen.addCommand("w", "move up", moveUp);
+    Screen.addCommand("s", "move down", moveDown);
+    Screen.addCommand("a", "move left", moveLeft);
+    Screen.addCommand("d", "move right", moveRight);
+
+    this.cursor.resetBackgroundColor();
     this.cursor.setBackgroundColor();
     Screen.render();
   }
 
   // Remove this
-  static testCommand() {
-    console.log("TEST COMMAND");
-  }
+  // static testCommand() {
+  //   console.log("TEST COMMAND");
+  // }
 
   static checkWin(grid) {
     // Return 'X' if player X wins
