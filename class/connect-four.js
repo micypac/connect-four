@@ -50,35 +50,40 @@ class ConnectFour {
       Screen.render();
     };
 
+    // function defintions for placing a mark on cell
     const playerMark = () => {
-      Screen.setGrid(this.cursor.row, this.cursor.col, this.playerTurn);
-      this.grid[this.cursor.row][this.cursor.col] = this.playerTurn;
+      if (this.grid[this.cursor.row][this.cursor.col] === " ") {
+        Screen.setGrid(this.cursor.row, this.cursor.col, this.playerTurn);
+        this.grid[this.cursor.row][this.cursor.col] = this.playerTurn;
+      }
+
+      let resp = ConnectFour.checkWin(this.grid);
+      if (resp !== false) ConnectFour.endGame(resp);
     };
 
     const computerMark = () => {
-      Screen.setGrid(this.cursor.row, this.cursor.col, "X");
-      this.grid[this.cursor.row][this.cursor.col] = "X";
+      if (this.grid[this.cursor.row][this.cursor.col] === " ") {
+        Screen.setGrid(this.cursor.row, this.cursor.col, "X");
+        this.grid[this.cursor.row][this.cursor.col] = "X";
+      }
+
+      let resp = ConnectFour.checkWin(this.grid);
+      if (resp !== false) ConnectFour.endGame(resp);
     };
 
     // add game commands
-
     Screen.addCommand("h", "show commands", Screen.printCommands);
     Screen.addCommand("w", "move up", moveUp);
     Screen.addCommand("s", "move down", moveDown);
     Screen.addCommand("a", "move left", moveLeft);
     Screen.addCommand("d", "move right", moveRight);
     Screen.addCommand("m", "player turn", playerMark);
-    Screen.addCommand("b", "computer turn", computerMark);
+    Screen.addCommand("n", "computer turn", computerMark);
 
     this.cursor.resetBackgroundColor();
     this.cursor.setBackgroundColor();
     Screen.render();
   }
-
-  // Remove this
-  // static testCommand() {
-  //   console.log("TEST COMMAND");
-  // }
 
   static checkWin(grid) {
     // Return 'X' if player X wins
