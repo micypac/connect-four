@@ -50,6 +50,16 @@ class ConnectFour {
       Screen.render();
     };
 
+    const playerMark = () => {
+      Screen.setGrid(this.cursor.row, this.cursor.col, this.playerTurn);
+      this.grid[this.cursor.row][this.cursor.col] = this.playerTurn;
+    };
+
+    const computerMark = () => {
+      Screen.setGrid(this.cursor.row, this.cursor.col, "X");
+      this.grid[this.cursor.row][this.cursor.col] = "X";
+    };
+
     // add game commands
 
     Screen.addCommand("h", "show commands", Screen.printCommands);
@@ -57,6 +67,8 @@ class ConnectFour {
     Screen.addCommand("s", "move down", moveDown);
     Screen.addCommand("a", "move left", moveLeft);
     Screen.addCommand("d", "move right", moveRight);
+    Screen.addCommand("m", "player turn", playerMark);
+    Screen.addCommand("b", "computer turn", computerMark);
 
     this.cursor.resetBackgroundColor();
     this.cursor.setBackgroundColor();
