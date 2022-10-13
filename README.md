@@ -26,10 +26,8 @@ the game ends in a tie.
 
 ## Tasks
 
-1. Fill out movement logic in `class/cursor.js` until `mocha
-   test/cursor-spec.js` passes all tests
-2. Fill out game logic in `class/connect-four.js` until `mocha
-   test/connect-four-spec.js` passes all tests
+1. Fill out movement logic in `class/cursor.js` until `mocha test/cursor-spec.js` passes all tests
+2. Fill out game logic in `class/connect-four.js` until `mocha test/connect-four-spec.js` passes all tests
 3. Create commands for cursor movement in `connect-four.js` that call
    `cursor.left`, and `cursor.right`
 4. Use `setBackgroundColor` and `resetBackgroundColor` in `cursor.js` to
@@ -46,55 +44,55 @@ modify this class at all. The functionality you will need is documented below.
 
 ### Initialize
 
-* `Screen.initialize(numRows, numCols)` will initialize a grid with the given
+- `Screen.initialize(numRows, numCols)` will initialize a grid with the given
   dimensions.
 
 ### Initialize
 
-* `Screen.setGridlines(gridLines)` will insert lines between each grid element
+- `Screen.setGridlines(gridLines)` will insert lines between each grid element
   is `gridLines` is true, or hide them if `gridLines` is false.
 
 ### Commands
 
-* `Screen.addCommand(key, description, action)` will add a command that calls
+- `Screen.addCommand(key, description, action)` will add a command that calls
   the `action` callback anytime `key` is typed on the keyboard. `description`
   will be displayed in the help message.
-* `Screen.printCommands()` will show a list of all loaded commands and their
+- `Screen.printCommands()` will show a list of all loaded commands and their
   descriptions.
 
 ### Updating the grid
 
-* `Screen.setGrid(row, col, char)` sets the character at `row` and `col` to
+- `Screen.setGrid(row, col, char)` sets the character at `row` and `col` to
   the given `char`.
-* `Screen.setTextColor(row, col, color)` sets the text color at `row` and
+- `Screen.setTextColor(row, col, color)` sets the text color at `row` and
   `col` to the given `color`.
-* `Screen.setBackgroundColor(row, col, color)` sets the background color at
+- `Screen.setBackgroundColor(row, col, color)` sets the background color at
   `row` and `col` to the given `color`.
 
 Valid colors are:
-  * black
-  * red
-  * green
-  * yellow
-  * blue
-  * cyan
-  * white
-  * magenta
+
+- black
+- red
+- green
+- yellow
+- blue
+- cyan
+- white
+- magenta
 
 ### Quitting
 
-* `Screen.setQuitMessage(quitMessage)` sets a message to be printed when the
+- `Screen.setQuitMessage(quitMessage)` sets a message to be printed when the
   user quits.
-* `Screen.quit(showMessage=true)` quits the game and prints the message if
+- `Screen.quit(showMessage=true)` quits the game and prints the message if
   `showMessage` is true.
 
 ### Rendering
 
-* `Screen.render()` will update the display. This must be called anytime the
+- `Screen.render()` will update the display. This must be called anytime the
   grid or messages change.
 
 ### Displaying a message
 
-* `Screen.setMessage(msg)` takes in a string to be printed below the grid each
+- `Screen.setMessage(msg)` takes in a string to be printed below the grid each
   time it is rendered.
-
